@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./src/icon.png" type="image/x-icon">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        .signup-container {
+            max-width: 60%;
+            margin: auto;
+            margin-top: 100px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .error-message {
+            color: #dc3545;
+            margin-top: 5px;
+        }
+
+        .error-input {
+            border: 1px solid #ff384ca9;
+            background-color: #ffedf0;
+        }
+
+    </style>
+</head>
+
+<body >
+
+    <div class="container signup-container" >
+        <h2 class="text-center">Signup</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <div id="emailError" class="text-danger"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+                <div id="passwordError" class="text-danger"></div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Signup</button>
+            <div class="mt-3 text-center">
+                <p>Do you have an account? <a href="login.html">Login</a></p>
+            </div>
+        </form>
+    </div>
+    <br>
+    <footer class="p-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <span class="rights d-block mb-2">All Rights Reseved © 2024</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero</p>                </div>
+                    
+                <div class="col-6 col-md-6 col-lg-2">
+                    <h5>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">User Agreement</a></li>
+                        <li><a href="#">Copyright Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-6 col-lg-2">
+                    <h5>About</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-6 col-lg-2">
+                    <h5>Community</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Guest Controls</a></li>
+                        <li><a href="#">Guidelines</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-6 col-lg-2">
+                    <h5>Accessibility</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Statement</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#signupForm').submit(function (event) {
+                event.preventDefault();
+            });
+
+            function validateField(element, errorMessage, validationFunction) {
+                var isValid = validationFunction(element);
+                element.removeClass('error-input');
+                element.addClass('valid-input');
+                element.next('.error-message').remove();
+
+                if (!isValid) {
+                    element.addClass('error-input');
+                    element.removeClass('valid-input');
+                    element.after('<div class="error-message">' + errorMessage + '</div>');
+                }
+                return isValid;
+            }
+
+            function validateUsername(element) {
+                return element.val().length >= 3;
+            }
+
+            function validateEmail(element) {
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(element.val());
+            }
+
+            function validatePassword(element) {
+                var passlength = element.val().length;
+                return passlength >= 8 && passlength <= 20;
+            }
+
+            function validateConfirmPassword(element) {
+                return element.val() === $('#password').val();
+            }
+
+            $('#username').on('blur', function () {
+                validateField($(this), 'Username must be at least 3 characters', validateUsername);
+            });
+
+            $('#email').on('blur', function () {
+                validateField($(this), 'Please enter a valid email (example@domain.com)', validateEmail);
+            });
+
+            $('#password').on('blur', function () {
+                validateField($(this), 'Password must be between 8 and 20 characters', validatePassword);
+            });
+
+            $('#confirmPassword').on('blur', function () {
+                validateField($(this), 'Passwords do not match', validateConfirmPassword);
+            })
+
+            function allInputsValid() {
+                var isValid = true;
+                $('input').each(function () {
+                    if (!$(this).hasClass('valid-input')) {
+                        isValid = false;
+                        return false;
+                    }
+                });
+                return isValid;
+            }
+            $('#signupForm').submit(function (event) {
+                var isValid = allInputsValid();
+
+                if (isValid) {
+                    var username = $('#username').val();
+                    var email = $('#email').val();
+                    var password = $('#password').val();
+                    var confirmPassword = $('#confirmpassword').val();
+
+                    var users = JSON.parse(localStorage.getItem("users")) || [];
+
+                    var user = {
+                        username: username,
+                        email: email,
+                        password: password
+                    };
+
+                    users.push(user);
+                    localStorage.setItem("users", JSON.stringify(users));
+                    $('#username, #email, #password, #confirmpassword').val('');
+
+                    var currentUser = {
+                        username: username
+                    };
+
+                    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+                    alert("Registration successful!");
+                    window.location.href = "home.html";
+                } else {
+                    event.preventDefault();
+                    alert("Please fill in all the required fields correctly.");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

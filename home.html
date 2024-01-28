@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./src/icon.png" type="image/x-icon">
+    <title>LinkedIn - Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/dce9d3d3f0.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+
+        }
+
+        .navbar {
+            background-color: #0077b5;
+        }
+
+        .navbar-brand img {
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .navbar-brand:hover,
+        .navbar-nav .nav-link:hover {
+            color: #fff;
+        }
+
+        .jumbotron {
+            background-color: #fff;
+            padding: 30px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .jumbotron h1,
+        .jumbotron p {
+            color: #333;
+        }
+
+        .jumbotron img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .links-section {
+            display: flex;
+            justify-content: center;
+            justify-content: space-around;
+        }
+
+        .links-section a {
+            padding: 1em;
+            border-radius: 2em;
+        }
+
+        .links-section a:hover {
+            background-color: rgb(50, 50, 187);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .post_field {
+            width: 100%;
+            border-radius: 1em;
+            border: solid gray 1px;
+            padding: 0.5em 0.8em;
+        }
+
+        .profile-image {
+            max-width: 3em;
+            margin-right: 1rem;
+            border-radius: 2em;
+            /* display: inline; */
+        }
+        .posts {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="font-weight: bold;">
+                <img src="src/icon.png" width="30" height="30" class="d-inline-block align-top" alt="LinkedIn Logo">
+                LinkedIn
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-home"></i> Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-briefcase"></i> Jobs</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-user" id="username-icon"></i> 
+                        <span class="username-text">Profile </span></a>
+                    </li>
+                </ul>
+            </div>
+            <a class="nav-link" href="#" id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                Logout</a>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="user-info container-fluid mt-3">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-4 d-none d-md-block">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <img src="https://cdn0.iconfinder.com/data/icons/round-user-avatar/33/user_circle_man_director_manager-1024.png"
+                                alt="Profile Picture" class="img-fluid rounded-circle"
+                                style="width: 100px; height:100px;">
+                            <h5 class="mt-2 username-text"></h5>
+                        </div>
+                        <h6 class="card-subtitle mb-2 text-muted" style="text-align: center;">Software Developer</h6>
+                        <hr>
+                        <div class="mb-4">
+                            <h6 class="card-subtitle mb-2 text-muted"><i class="fa-solid fa-circle-nodes"></i>
+                                Connections</h6>
+                            <p>500+ Connections</p>
+                        </div>
+                        <hr>
+                        <div class="mb-4">
+                            <h6 class="card-subtitle mb-2 text-muted"><i class="fa-solid fa-wand-sparkles"></i> Boost
+                                your job search</h6>
+                            <a href="#"><i class="fa-solid fa-money-check-dollar"></i> Try Premium for EGP 0</a>
+                        </div>
+                        <hr>
+                        <div>
+                            <a href="#">
+                                <h6 class="card-subtitle mb-2 text-muted"><i class="fa-solid fa-bookmark"></i> My Items
+                                </h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="post-section">
+                            <input class="post post_field" type="text" placeholder="Start a post">
+                        </div>
+
+                        <div class="links-section">
+                            <a href="#" class="link"><i class="fa-regular fa-images"></i> Media</a>
+                            <a href="#" class="link"><i class="fa-regular fa-calendar-plus"></i> Event</a>
+                            <a href="#" class="link"><i class="fa-regular fa-newspaper"></i> Write Article</a>
+                        </div>
+                        <hr class="my-4">
+                        <div class="post-container mt-3">
+                            <div class="post-header">
+                                <img src="https://media.licdn.com/dms/image/C4D03AQEzXDhaMSjx6g/profile-displayphoto-shrink_100_100/0/1656269916826?e=1711584000&v=beta&t=cgtoaaMX9vNnsXdLWkYDZ5ag_-gHTiUMNMYTq3SQheE"
+                                class="profile-image">
+                                <a href="#"
+                                >
+                                    <h6 class="name" style="display: inline;">
+                                        Shubham Kamble
+                                    </h6>
+                                </a>
+                                <div class="header-info">
+                                    <p class="title">Full Stack Web Developer | WebFlow</p>
+                                </div>
+                                <button class="follow-btn btn btn-outline-primary">Follow</button>
+                            </div>
+                            <div class="post-content mt-3">
+                                <p>👨‍💻 JavaScript Project Ideas For Beginners! 🤩💯</p>
+                                <strong>😊 𝐇𝐚𝐩𝐩𝐲 𝐜𝐨𝐝𝐢𝐧𝐠!</strong>
+                                <p>😍 Learn React with <a href="https://www.W3Schools.com">W3Schools.com</a> 🔥</p>
+                                <p>Credits - Imtiyaz Nandasaniya & CODE.CLASH (IG)</p>
+                                <p>💯 Follow Shubham Kamble for more Web Development, Programming Tips & Tricks, and Job Opportunities.</p>
+                                <p>👍 𝑯𝒊𝒕 𝒍𝒊𝒌𝒆, if you found it helpful !</p>
+                                <p>🔁 𝑹𝒆𝒑𝒐𝒔𝒕 it to your network !</p>
+
+                                #w3schools #javascript #projects #ideas #cheatsheet #tips #mastery #react #clean #code
+                                #guide #developer #programmer #web #development #code #nextjs #nextjs14
+                                #fullstackdevelopment #roadmap #webdevelopment #mern #mean #angular #nodejs #expressjs
+                                #postgresql #sql #guide #useful #notes
+                            </div>
+                            <img src="src/blog1.png" alt="Post Image" class="post-image posts">
+                        </div>
+                        <hr class="my-4">
+                        <div class="post-container mt-3">
+                            <div class="post-header">
+                                <img src="https://media.licdn.com/dms/image/D5603AQFmVZgTFGiS7w/profile-displayphoto-shrink_100_100/0/1687697439166?e=1711584000&v=beta&t=chQucJsB9qQRrC2-oc9q3CRs2jUJ83pUXzUNXOf9RQ4"
+                                class="profile-image">
+                                <a href="#">
+                                    <h6 class="name" style="display: inline;">
+                                        Aman Tiwari
+                                    </h6>
+                                </a>
+                                <div class="header-info">
+                                    <p class="title">Senior Data scientist at Tata consultancy services</p>
+                                </div>
+                                <button class="follow-btn btn btn-outline-primary">Follow</button>
+                            </div>
+                            <div class="post-content mt-3">
+                                <p>Haha, this one got me for real!</p>
+                                    <p>Can you relate to this?</p>
+                                    <p>Share it in the comments!</p>                                    
+                                    <p>#programming #coding #programmer #developer</p>
+                            </div>
+                            <img src="src/blog2.png" alt="Post Image" class="post-image posts">
+                        </div>
+                        <hr class="my-4">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <h4>
+                                1,035,751 members
+                            </h4>
+                            <small>Including Kadiri Adeyinka and 198 other connections</small>
+
+                        </div>
+                        <div class="suggestion-card">
+                            <a href="/in/dr-heba-saleh/" class="profile-link">
+                                <img width="48"
+                                    src="https://media.licdn.com/dms/image/D4D35AQFEaKaug9GHWA/profile-framedphoto-shrink_100_100/0/1689785938645?e=1707030000&v=beta&t=MpMP0feAs5ljqkzmlr2NOqc0MvFu2LaXLZfrxdUO0mI"
+                                    class="profile-image">
+                                    <img width="48"
+                                    src="https://media.licdn.com/dms/image/D4D03AQEMcmE4REnq1w/profile-displayphoto-shrink_100_100/0/1705592292296?e=1712188800&v=beta&t=cNrFqvtZrWUYRrCjxkuQxjyPX33PrYhBklUTV3VFMes"
+                                    class="profile-image">
+                                    <img width="48"
+                                    src="https://media.licdn.com/dms/image/D5603AQEADYeeJ8_kEA/profile-displayphoto-shrink_100_100/0/1699499891813?e=1712188800&v=beta&t=lZ6EF2j5OhUeum_7QhR2xYA_DNwOu6mBzufGTaFL7k0"
+                                    class="profile-image">  
+                                        <p style="border: 1px solid gray; border-radius: 50%; padding: 0.6em; display: inline; width: fit-content;">
+                                            199
+                                        </p>
+                            </a>
+                            <div class="profile-details mt-2">
+                                <button class="follow-btn btn btn-primary" 
+                                style="border-radius: 1.5em;">Invite Connections</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <button class="btn btn-outline-secondary " 
+                        style="width: 100%; border: 1px solid white;">Show All <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-body">
+                        <a href="#">
+                            View all recommendations
+                        </a>
+                        <footer class="mt-3">
+                            <h5>Legal</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="#">User Agreement</a></li>
+                                <li><a href="#">Copyright Policy</a></li>
+                            </ul>
+                            <h5>Accessibility</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Statement</a></li>
+                                <li><a href="#">Terms of Service</a></li>
+                            </ul>
+                            <h5>Community</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Guest Controls</a></li>
+                                <li><a href="#">Guidelines</a></li>
+                            </ul>
+                            <span class="rights d-block mt-auto">All Rights Reserved © 2024</span>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
+            var username = currentUser.username || '';
+
+            $('.username-text').text(username);
+            $('#username-icon').removeClass('fas fa-user').addClass('fas fa-user-circle');
+
+            $('#logout').on('click', function () {
+                localStorage.removeItem('currentUser');
+                window.location.href = 'login.html';
+            });
+        });
+    </script>
+</body>
+
+</html>
